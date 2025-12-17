@@ -1,5 +1,5 @@
 import tkinter as tk
-import Buttons
+import ui
 
 root = tk.Tk()
 
@@ -17,7 +17,7 @@ root.update_idletasks()
 root.overrideredirect(True)
 root.attributes("-topmost", True)
 
-Buttons.MacCloseButton(
+ui.MacCloseButton(
     parent=root,
     x=10,
     y=10,

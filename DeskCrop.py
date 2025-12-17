@@ -18,12 +18,25 @@ root.title("DeskCrop")
 # 放按鈕
 MacCloseButton(parent=root, x=10, y=10, command=root.destroy)
 
-# 放第一塊土地
-tile = TileView(parent=root, x=100, y=50)
+# 放置 3 x 2 塊土地
+tiles = []
+rows = 3
+cols = 2
+size = 30
+gap = 6
+start_x = 50
+start_y = 50
+for row in range(rows):
+    for col in range(cols):
+        x = start_x + row * ( size + gap )
+        y = start_y + col * ( size + gap )
+        tile = TileView(parent=root, x=x, y=y, size=size)
+        tiles.append(tile)
 
 # 每 500ms 更新一次
 def game_loop():
-    tile.tick()
+    for tile in tiles:
+        tile.tick()
     root.after(500, game_loop)
 
 game_loop()

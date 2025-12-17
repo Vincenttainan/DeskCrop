@@ -2,12 +2,13 @@ import tkinter as tk
 from game.tile import Tile, TileState
 
 class TileView:
-    def __init__(self, parent, x, y, size=30):
+    def __init__(self, parent, x, y, money, size=30):
         self.parent = parent
         self.size = size
         self.tile = Tile(grow_duration=5)  # 測試用短時間
         self.canvas = tk.Canvas(parent, width=size, height=size, bg="saddle brown")
         self.canvas.place(x=x, y=y)
+        self.money=money
 
         self.canvas.bind("<Enter>", self._on_enter)
         self._update_view()
@@ -24,6 +25,7 @@ class TileView:
             self.tile.plant()
         elif self.tile.state == TileState.READY:
             self.tile.harvest()
+            self.money.add(1)
         self._update_view()
 
     def _update_view(self):

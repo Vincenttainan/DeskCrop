@@ -1,4 +1,5 @@
 import tkinter as tk
+from game.Money import Money
 from ui import *
 
 root = tk.Tk()
@@ -14,6 +15,10 @@ root.overrideredirect(True)
 root.attributes("-topmost", True)
 root.title("DeskCrop")
 
+# init money
+money = Money(initial=0)
+Money_View = MoneyView(parent=root, money=money)
+
 # 放按鈕
 MacCloseButton(parent=root, x=10, y=10, command=root.destroy)
 
@@ -25,13 +30,15 @@ farm = FarmView(
     start_x=50,
     start_y=50,
     size=20,
-    gap=6
+    gap=6,
+    money=money
 )
 
-# 每 500ms 更新一次
+# 每 0.1sec 更新一次
 def game_loop():
     farm.tick()
-    root.after(500, game_loop)
+    Money_View.update()
+    root.after(100, game_loop)
 
 game_loop()
 root.mainloop()

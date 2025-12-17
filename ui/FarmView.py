@@ -1,14 +1,14 @@
 from .TileView import TileView
 
 class FarmView:
-    def __init__(self, parent, rows, cols, start_x, start_y, size=30, gap=6):
+    def __init__(self, parent, rows, cols, start_x, start_y, money, size=30, gap=6):
         self.tiles = []
 
         for r in range(rows):
             for c in range(cols):
                 x = start_x + c * (size + gap)
                 y = start_y + r * (size + gap)
-                tile = TileView(parent, x, y, size=size)
+                tile = TileView(parent, x, y, size=size, money=money)
                 self.tiles.append(tile)
 
     def tick(self):

@@ -1,6 +1,5 @@
 import tkinter as tk
-from ui import MacCloseButton
-from ui import TileView
+from ui import *
 
 root = tk.Tk()
 screen_width = root.winfo_screenwidth()
@@ -18,25 +17,20 @@ root.title("DeskCrop")
 # 放按鈕
 MacCloseButton(parent=root, x=10, y=10, command=root.destroy)
 
-# 放置 3 x 2 塊土地
-tiles = []
-rows = 3
-cols = 2
-size = 30
-gap = 6
-start_x = 50
-start_y = 50
-for row in range(rows):
-    for col in range(cols):
-        x = start_x + row * ( size + gap )
-        y = start_y + col * ( size + gap )
-        tile = TileView(parent=root, x=x, y=y, size=size)
-        tiles.append(tile)
+# 放置 2 x 3 塊土地
+farm = FarmView(
+    parent=root,
+    rows=2,
+    cols=3,
+    start_x=50,
+    start_y=50,
+    size=20,
+    gap=6
+)
 
 # 每 500ms 更新一次
 def game_loop():
-    for tile in tiles:
-        tile.tick()
+    farm.tick()
     root.after(500, game_loop)
 
 game_loop()

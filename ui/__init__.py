@@ -1,4 +1,8 @@
 from .Buttons import MacCloseButton
-from .tile_view import TileView
+from .TileView import TileView
+from .FarmView import FarmView
 
-__all__ = ["MacCloseButton", "TileView"]
+__all__ = ["MacCloseButton",
+           "TileView",
+           "FarmView"
+          ]

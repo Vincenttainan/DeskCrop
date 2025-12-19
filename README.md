@@ -116,3 +116,50 @@ DeskCrop/
 * UI 改進動畫效果  
 
 </details>
+
+---
+
+## [v0.3](https://github.com/Vincenttainan/DeskCrop/tree/f231e9bac9be43b29ee2e44d29b914334ec211ee)  
+
+<details>
+
+### 簡介  
+完成核心遊戲循環，加入存檔 / 讀檔機制  
+關閉程式後作物仍會持續生長，重新開啟可正確恢復狀態  
+
+### 功能  
+* v0.2 所有功能  
+* 存檔 / 讀檔系統（JSON）  
+* 土地狀態保存（EMPTY / GROWING / READY）  
+* 作物生長時間保存（支援離線成長）  
+* 金錢數值保存與恢復  
+
+### 專案結構  
+```
+DeskCrop/
+├── data/
+│   ├── SaveLoadManager.py     # 整合處理 Tile
+│   └── save.json              # 可有可無，反正就存遊戲進度
+├── ui/
+│   ├── Buttons.py             # Mac 風格關閉按鈕元件
+│   ├── TileView.py            # 土地視覺與互動
+│   ├── MoneyView.py           # 顯示金錢的 Label
+│   ├── FarmView.py            # 整合處理 Tile
+│   └── __init__.py
+├── game/
+│   ├── tile.py                # 土地 / 作物邏輯
+│   └── Money.py               # 金錢邏輯
+├── DeskCrop.py                # 主程式
+└── assets/                    # 後續圖片、素材
+```
+
+### 未來規劃  
+
+* 自動收成  
+* 作物品質系統與升級系統  
+* 土地解鎖（lock / unlock）系統  
+* 作物種類與成長差異  
+* 升級與花費金錢機制  
+* 更完整的 UI 與動畫效果  
+
+</details>

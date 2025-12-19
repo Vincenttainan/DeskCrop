@@ -1,6 +1,7 @@
 import tkinter as tk
 from game.Money import Money
 from ui import *
+from data.SaveLoadManager import SaveLoadManager
 
 root = tk.Tk()
 screen_width = root.winfo_screenwidth()
@@ -15,14 +16,9 @@ root.overrideredirect(True)
 root.attributes("-topmost", True)
 root.title("DeskCrop")
 
-# init money
-money = Money(initial=0)
-Money_View = MoneyView(parent=root, money=money)
+money = Money()
+save_data = SaveLoadManager.load()
 
-# 放按鈕
-MacCloseButton(parent=root, x=10, y=10, command=root.destroy)
-
-# 放置 2 x 3 塊土地
 farm = FarmView(
     parent=root,
     rows=2,
@@ -34,11 +30,30 @@ farm = FarmView(
     money=money
 )
 
+if save_data:
+    money.set(save_data["money"])
+    farm.load_tiles(save_data["tiles"])
+else:
+    money.set(0)
+
+# init money
+Money_View = MoneyView(parent=root, money=money)
+
+# 放按鈕
+def save_and_exit():
+    save_game()
+    root.destroy()
+
+MacCloseButton(parent=root, x=10, y=10, command=save_and_exit)
+
 # 每 0.1sec 更新一次
 def game_loop():
     farm.tick()
     Money_View.update()
     root.after(100, game_loop)
+
+def save_game():
+    SaveLoadManager.save(money, farm.tiles)
 
 game_loop()
 root.mainloop()

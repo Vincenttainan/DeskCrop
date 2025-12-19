@@ -4,6 +4,9 @@ class Money:
 
     def add(self, value: int):
         self.amount += value
+    
+    def set(self, value: int):
+        self.amount = value
 
     def spend(self, value: int) -> bool:
         if self.amount >= value:

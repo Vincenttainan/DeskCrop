@@ -41,3 +41,8 @@ class TileView:
         """每個 interval 呼叫一次，更新成長狀態"""
         self.tile.update()
         self._update_view()
+
+    def set_tile(self, tile):
+        self.tile = tile
+        self._update_view()
+

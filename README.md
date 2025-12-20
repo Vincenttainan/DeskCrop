@@ -138,7 +138,7 @@ DeskCrop/
 ```
 DeskCrop/
 ├── data/
-│   ├── SaveLoadManager.py     # 整合處理 Tile
+│   ├── SaveLoadManager.py     # 存檔讀檔處理
 │   └── save.json              # 可有可無，反正就存遊戲進度
 ├── ui/
 │   ├── Buttons.py             # Mac 風格關閉按鈕元件

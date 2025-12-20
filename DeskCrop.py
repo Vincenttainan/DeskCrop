@@ -1,5 +1,5 @@
 import tkinter as tk
-from game.Money import Money
+from game import Money
 from ui import *
 from data.SaveLoadManager import SaveLoadManager
 

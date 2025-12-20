@@ -1,0 +1,35 @@
+{
+  "money": 39,
+  "tiles": [
+    {
+      "state": "EMPTY",
+      "planted_at": null,
+      "grow_duration": 5
+    },
+    {
+      "state": "EMPTY",
+      "planted_at": null,
+      "grow_duration": 5
+    },
+    {
+      "state": "EMPTY",
+      "planted_at": null,
+      "grow_duration": 5
+    },
+    {
+      "state": "EMPTY",
+      "planted_at": null,
+      "grow_duration": 5
+    },
+    {
+      "state": "EMPTY",
+      "planted_at": null,
+      "grow_duration": 5
+    },
+    {
+      "state": "EMPTY",
+      "planted_at": null,
+      "grow_duration": 5
+    }
+  ]
+}

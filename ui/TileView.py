@@ -1,8 +1,10 @@
 import tkinter as tk
-from game.tile import Tile, TileState
+from game import Tile, TileState
+from utils.debug import log
 
 class TileView:
     def __init__(self, parent, x, y, money, size=30):
+        log("INFO", "ui/TileView.py", "畫布初始化")
         self.parent = parent
         self.size = size
         self.tile = Tile(grow_duration=5)  # 測試用短時間
@@ -21,6 +23,7 @@ class TileView:
         self._update_view()'''
 
     def _on_enter(self, event):
+        #log("INFO", "ui/TileView.py", "畫布被入了")
         if self.tile.state == TileState.EMPTY:
             self.tile.plant()
         elif self.tile.state == TileState.READY:
@@ -29,7 +32,6 @@ class TileView:
         self._update_view()
 
     def _update_view(self):
-        """根據 tile 狀態改變顏色"""
         if self.tile.state == TileState.EMPTY:
             self.canvas.config(bg="saddle brown")
         elif self.tile.state == TileState.GROWING:

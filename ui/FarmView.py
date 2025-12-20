@@ -1,5 +1,5 @@
 from .TileView import TileView
-from game.tile import Tile
+from game import Tile
 
 class FarmView:
     def __init__(self, parent, rows, cols, start_x, start_y, money, size=30, gap=6):

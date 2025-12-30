@@ -46,6 +46,7 @@ class MacCloseButton:
         self.canvas.bind("<ButtonPress-1>", self._on_click)
 
     def _on_enter(self, event):
+        self.canvas.focus_set()
         self.canvas.itemconfigure(self.circle, fill="#e0443e")
         self.canvas.itemconfigure(self.x1, state="normal")
         self.canvas.itemconfigure(self.x2, state="normal")

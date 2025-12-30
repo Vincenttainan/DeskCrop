@@ -21,10 +21,10 @@ save_data = SaveLoadManager.load()
 
 farm = FarmView(
     parent=root,
-    rows=2,
-    cols=3,
+    rows=5,
+    cols=5,
     start_x=50,
-    start_y=50,
+    start_y=20,
     size=20,
     gap=6,
     money=money
@@ -33,6 +33,7 @@ farm = FarmView(
 if save_data:
     money.set(save_data["money"])
     farm.load_tiles(save_data["tiles"])
+    print(save_data["tiles"])
 else:
     money.set(0)
 

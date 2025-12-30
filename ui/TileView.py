@@ -4,7 +4,7 @@ from utils.debug import log
 
 class TileView:
     def __init__(self, parent, x, y, money, size=30):
-        log("INFO", "ui/TileView.py", "畫布初始化")
+        #log("INFO", "ui/TileView.py", "畫布初始化")
         self.parent = parent
         self.size = size
         self.tile = Tile(grow_duration=5)  # 測試用短時間
@@ -13,17 +13,22 @@ class TileView:
         self.money=money
 
         self.canvas.bind("<Enter>", self._on_enter)
+        self.canvas.bind("<ButtonPress-1>", self._on_click)
         self._update_view()
 
-    '''def on_click(self, event):
-        if self.tile.state == TileState.EMPTY:
-            self.tile.plant()
-        elif self.tile.state == TileState.READY:
-            self.tile.harvest()
-        self._update_view()'''
+    def _on_click(self, event):
+        if self.tile.state == TileState.LOCKED:
+            log("INFO", "ui/TileView.py", "畫布被點擊了")
+            self.tile.unlock()
+            self._update_view()
+        else:
+            return
 
     def _on_enter(self, event):
-        #log("INFO", "ui/TileView.py", "畫布被入了")
+        self.canvas.focus_set()
+        if self.tile.state == TileState.LOCKED:
+            return
+        log("INFO", "ui/TileView.py", "畫布被入了")
         if self.tile.state == TileState.EMPTY:
             self.tile.plant()
         elif self.tile.state == TileState.READY:
@@ -32,7 +37,9 @@ class TileView:
         self._update_view()
 
     def _update_view(self):
-        if self.tile.state == TileState.EMPTY:
+        if self.tile.state == TileState.LOCKED:
+            self.canvas.config(bg="black")
+        elif self.tile.state == TileState.EMPTY:
             self.canvas.config(bg="saddle brown")
         elif self.tile.state == TileState.GROWING:
             self.canvas.config(bg="green")

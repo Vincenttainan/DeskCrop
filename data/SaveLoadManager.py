@@ -6,10 +6,11 @@ SAVE_PATH = "data/save.json"
 
 class SaveLoadManager:
     @staticmethod
-    def save(money, tiles):
+    def save(money, FarmView, tiles):
         log("INFO", "data/SaveLoadManager.py", "開始存檔")
         data = {
             "money": money.amount,
+            "unlocked_count": FarmView.unlocked_count,
             "tiles": [tile.tile.to_dict() for tile in tiles]
         }
 

@@ -33,9 +33,12 @@ farm = FarmView(
 if save_data:
     money.set(save_data["money"])
     farm.load_tiles(save_data["tiles"])
-    print(save_data["tiles"])
+    farm.unlock_count=save_data["unlocked_count"]
 else:
     money.set(0)
+    farm.unlock(0,0)
+    farm.unlock(0,1)
+    farm.unlock(0,2)
 
 # init money
 Money_View = MoneyView(parent=root, money=money)
@@ -54,7 +57,7 @@ def game_loop():
     root.after(100, game_loop)
 
 def save_game():
-    SaveLoadManager.save(money, farm.tiles)
+    SaveLoadManager.save(money, farm, farm.tiles)
 
 game_loop()
 root.mainloop()

@@ -3,7 +3,7 @@ from game import Tile, TileState
 from utils.debug import log
 
 class TileView:
-    def __init__(self, parent, x, y, money, size=30):
+    def __init__(self, parent, x, y, money, size=30, on_unlock_request=None):
         #log("INFO", "ui/TileView.py", "畫布初始化")
         self.parent = parent
         self.size = size
@@ -11,6 +11,7 @@ class TileView:
         self.canvas = tk.Canvas(parent, width=size, height=size, bg="saddle brown")
         self.canvas.place(x=x, y=y)
         self.money=money
+        self.on_unlock_request=on_unlock_request
 
         self.canvas.bind("<Enter>", self._on_enter)
         self.canvas.bind("<ButtonPress-1>", self._on_click)
@@ -19,8 +20,7 @@ class TileView:
     def _on_click(self, event):
         if self.tile.state == TileState.LOCKED:
             log("INFO", "ui/TileView.py", "畫布被點擊了")
-            self.tile.unlock()
-            self._update_view()
+            self.on_unlock_request(self)
         else:
             return
 

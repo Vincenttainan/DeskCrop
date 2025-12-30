@@ -163,3 +163,53 @@ DeskCrop/
 * 更完整的 UI 與動畫效果  
 
 </details>
+
+---
+
+## [v0.4](https://github.com/Vincenttainan/DeskCrop/tree/604d99bce72f80d5d0c8f29e61365df45c8c07b5)  
+
+<details>
+
+### 簡介  
+增加土地鎖定狀態，目前可直接點擊解鎖  
+
+### 功能  
+* v0.3 所有功能  
+* 土地鎖定狀態（LOCKED）  
+* 點擊土地可解鎖（LOCKED → EMPTY）  
+* Debug log 行為逐步規範化  
+
+### 專案結構  
+```
+DeskCrop/
+├── data/
+│   ├── SaveLoadManager.py     # 存檔讀檔處理
+│   └── save.json              # 可有可無，反正就存遊戲進度
+├── game/
+│   ├── Tile.py                # 土地 / 作物邏輯
+│   ├── Money.py               # 金錢邏輯
+│   └── __init__.py
+├── ui/
+│   ├── Buttons.py             # Mac 風格關閉按鈕元件
+│   ├── TileView.py            # 土地視覺與互動
+│   ├── MoneyView.py           # 顯示金錢的 Label
+│   ├── FarmView.py            # 整合處理 Tile
+│   └── __init__.py
+├── utils/
+│   └── debug.py               # 輸出 log
+├── DeskCrop.py                # 主程式
+└── assets/                    # 後續圖片、素材
+```
+
+### 未來規劃  
+
+* 自動解鎖初始土地（第一排 / 新手引導）
+* 金錢消耗式解鎖機制  
+* 自動收成  
+* 作物品質系統與升級系統  
+* 土地解鎖（lock / unlock）系統  
+* 作物種類與成長差異  
+* 升級與花費金錢機制  
+* 更完整的 UI 與動畫效果  
+
+</details>
